@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title style="text-align:center;">yufei</title>
+
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			background-color: #383838;
+			font-size: 1rem;
+		}
+
+
+    .infos{
+        background-color: #111111;
+        padding-left: 37%;
+        margin-top: 0vw;
+        padding-top: 10vw;
+        padding-bottom: 50vw;
+        vertical-align: top;
+    }
+
+    .info-text{
+        color: #e3e3e3;
+        font-size: 42px;
+    }
+
+    .input-box{
+      width: 80vw;
+      margin-top: 20vh;
+      margin-left: 10vw;
+      margin-bottom: 5vh;
+      border: 5px solid #5383ec;
+      border-radius: 50px;
+      font-size: 1.2rem;
+    }
+    .input-box div{
+      width: 70vw;
+      height: 5vh;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .toptabla_img{ 
+      width: 9px; height: 5px; 
+    }
+    .button{
+      margin-right: 2vw;
+    }
+
+    #title{
+        width: 100%;
+    }
+    #success{
+        width: 50%;
+        margin-right: 25%;
+        margin-bottom: 50vw;
+    }
+    #detail{
+        width: 100%;
+        margin-bottom: 0vw;
+        vertical-align: bottom;
+    }
+    #line{
+        position: absolute;
+        width: 50px;
+        left:550px;
+        top:2430px;
+    }
+	</style>
+</head>
+<body class="vsc-initialized">
+  <div class="input-box" id="input-box" style="text-align: center;">
+    <p style="font-size: 2rem;">人类高质量假码</p>
+    <div>班级：<input type="text" name="" id="input-class" placeholder="周六日_微微_爵士"></div>
+    <div>门店：<input type="text" name="" id="input-loc" placeholder="石景山校区"></div>
+    <div><button onclick="Enter(0)">一键签到</button></div>
+  </div>
+  <div class="content" id="content" style="display: none;">
+    <img class="picture" src="./yufei-title.png" id="title">
+    <img class="picture" src="./success.png" align="right" id="success">
+    <img class="picture" src="./detail.png" id="detail">
+    <div class="infos">
+        <img id="line" src="./line.png">
+        <pre class="info-text" id="info-class">班级：周六日_微微_爵士</pre>
+        <pre class="info-text" id="info-time">13:00:10</pre>
+        <pre class="info-text" id="info-location">签到门店：石景山校区</pre>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function curDateTime() {
+      var d = new Date();
+      var hours = d.getHours();
+      var minutes = d.getMinutes();
+      var seconds = d.getSeconds();
+      var ms = d.getMilliseconds();
+      var curDateTime = "";
+
+      if (hours > 9)
+        curDateTime = curDateTime + " " + hours;
+      else
+        curDateTime = curDateTime + " 0" + hours;
+      if (minutes > 9)
+        curDateTime = curDateTime + ":" + minutes;
+      else
+        curDateTime = curDateTime + ":0" + minutes;
+      if (seconds > 9)
+        curDateTime = curDateTime + ":" + seconds;
+      else
+        curDateTime = curDateTime + ":0" + seconds;  
+      return curDateTime;
+    };
+    curTime = curDateTime();
+    
+    function Enter(e) {
+
+      console.log(e);
+      var classname = document.getElementById("input-class").value;
+      var location = document.getElementById("input-loc").value;
+
+      document.getElementById("content").style.display = "";
+      document.getElementById("input-box").style.display = "none";
+
+      if (classname != '') {
+        document.getElementById("info-class").innerHTML = "班级：" + classname;
+      }
+      document.getElementById("info-time").innerHTML = "签到时间：" + curTime;
+      if (location != ''){
+        document.getElementById("info-location").innerHTML = "签到门店：:" + location;
+      }
+    }
+  </script>
+
+</body><div style="all: initial;"><div></div></div></html>
